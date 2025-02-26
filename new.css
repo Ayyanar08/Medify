@@ -1,0 +1,190 @@
+/* Full-screen animated background */
+body {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    background: linear-gradient(-45deg, #1e3c72, #2a5298, #6dd5ed, #2193b0);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+    margin: 0;
+    padding: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background: url("cloud.jpg");
+
+}
+
+/* Background gradient animation */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Floating animated clouds */
+body::before, body::after {
+    content: "";
+    position: absolute;
+    width: 200px;
+    background: rgba(255, 255, 255, 0.3);
+    filter: blur(40px);
+    border-radius: 50%;
+    animation: moveClouds 12s infinite alternate ease-in-out;
+}
+
+body::before {
+    top: 10%;
+    left: 15%;
+}
+
+body::after {
+    bottom: 10%;
+    right: 15%;
+}
+
+@keyframes moveClouds {
+    0% { transform: translateY(0px) scale(1); }
+    100% { transform: translateY(20px) scale(1.2); }
+}
+
+/* Glassmorphism effect for the container */
+.container {
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    color: rgb(23, 29, 61);
+    animation: fadeIn 1s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Input field styling */
+input {
+    width: 90%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.7);
+    color: black;
+    transition: 0.3s ease-in-out;
+}
+
+input:focus {
+    outline: none;
+    border: 2px solid #00c6ff;
+    box-shadow: 0 0 10px rgba(0, 198, 255, 0.7);
+}
+
+/* Animated button */
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: linear-gradient(90deg, #007bff, #00c6ff);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: all 0.4s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* Ripple animation on button click */
+button:active::after {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.5s ease-out;
+}
+
+button:hover {
+    background: linear-gradient(90deg, #0056b3, #00a6ff);
+    transform: scale(1.08);
+}
+
+button::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.6s ease-out;
+    transform: translate(-50%, -50%) scale(0);
+}
+
+button:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Weather info box */
+#weatherInfo {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 1s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Error message */
+.error {
+    color: rgb(255, 75, 75);
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Smooth fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Light/Dark mode toggle */
+.dark-mode {
+    background: linear-gradient(-45deg, #2b2b2b, #1c1c1c, #3a3a3a, #4b4b4b);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+    color: white;
+}
+
+.dark-mode .container {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.dark-mode input {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.dark-mode button {
+    background: linear-gradient(90deg, #ff6a00, #ee0979);
+}
+
+.dark-mode button:hover {
+    background: linear-gradient(90deg, #ff4500, #cc007a);
+}
+
